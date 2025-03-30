@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: "backend"
+
+  ai:
+    openai:
+      api-key: "sk-17VtRFAJyEzqXnum03vpkoU1MCZZHVSliGovbVxxadFJLZl6"
+
+
+#  datasource:
+#    url: jdbc:h2:mem:testdb
+#    driver-class-name: "org.h2.Driver"
