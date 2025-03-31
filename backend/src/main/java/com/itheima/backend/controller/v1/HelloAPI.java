@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/hello")
 public class HelloAPI {
 
-    @GetMapping("/aa")
+    @GetMapping("aa")
     public String aa(){
         System.out.println("aa");
         return "aa";

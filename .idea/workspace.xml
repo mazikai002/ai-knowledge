@@ -5,24 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6274e712-8348-4540-a48c-ae59a0a28d76" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/v1/DocAPI" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/v1/UserAPI" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/web/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/backend_Web_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../mazikai/ai-knowledge/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/model/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/model/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/model/vo/DocVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/model/vo/DocVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/utils/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/utils/Result.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/BackendApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/controller/v1/HelloAPI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/controller/v1/UserAPI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/dao/UserDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/model/entity/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/model/vo/DocVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/service/DocService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/service/impl/DocServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/service/impl/UserServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/utils/Result.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/BackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/BackendApplication" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/v1/Doc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/v1/Hello.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/v1/HelloAPI" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/DocService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/DocService" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/utils/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/utils/Result" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/BackendApplication" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/BackendApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/v1/DocAPI" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/v1/HelloAPI" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/v1/HelloAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/v1/UserAPI" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/v1/UserAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/model/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/DocService" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/DocService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/impl/DocServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/utils/Result" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/utils/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/itheima/backend/BackendApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/itheima/backend/common/RestResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/itheima/backend/controller/v1/Doc.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/itheima/backend/controller/v1/Hello.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/itheima/backend/model/vo/DocVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/itheima/backend/service/DocService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/itheima/backend/service/impl/DocServiceImpl.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,29 +80,42 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.BackendApplication.executor": "Run",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/mzk/Projects/JavaProjects/github.com/mazikai002/ai-knowledge/backend/src/main/java/com/itheima/backend/service",
+    "last_opened_file_path": "/Users/mzk/Projects/JavaProjects/github.com/mazikai002/ai-knowledge/backend/src/main/java/com/itheima/backend/controller/v1",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.16894531",
-    "project.structure.side.proportion": "0.24",
-    "settings.editor.selected.configurable": "Settings.JavaScript",
+    "project.structure.side.proportion": "0.23554301",
+    "settings.editor.selected.configurable": "MavenSettings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/v1" />
+      <recent name="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/impl" />
+      <recent name="$PROJECT_DIR$/backend" />
       <recent name="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service" />
       <recent name="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/utils" />
-      <recent name="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/dao" />
-      <recent name="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/v1" />
-      <recent name="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.itheima.backend.dao" />
+      <recent name="com.itheima.backend.model.entity" />
+      <recent name="com.itheima.backend" />
+      <recent name="com.itheima.backend.utils" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.BackendApplication">
+    <configuration name="BackendApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="backend (1)" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.itheima.backend.BackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="backend" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.itheima.backend.BackendApplication" />
@@ -110,11 +142,16 @@
       <updated>1743357389946</updated>
       <workItem from="1743357391023" duration="191000" />
       <workItem from="1743437116323" duration="836000" />
-      <workItem from="1743437976506" duration="819000" />
+      <workItem from="1743437976506" duration="1313000" />
+      <workItem from="1743439532860" duration="1652000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

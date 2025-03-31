@@ -6,7 +6,27 @@ spring:
     openai:
       api-key: "sk-17VtRFAJyEzqXnum03vpkoU1MCZZHVSliGovbVxxadFJLZl6"
 
+  datasource:
+    url: jdbc:mysql://localhost:3306/ai-knowledge?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root  # 替换为你的数据库用户名
+    password: 123456  # 替换为你的数据库密码
+    driver-class-name: com.mysql.cj.jdbc.Driver  # MySQL 驱动类
+    type: com.alibaba.druid.pool.DruidDataSource  # 使用 Druid 连接池
 
-#  datasource:
-#    url: jdbc:h2:mem:testdb
-#    driver-class-name: "org.h2.Driver"
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+
+  jackson:
+    serialization:
+      fail-on-empty-beans: false  # 允许序列化空对象

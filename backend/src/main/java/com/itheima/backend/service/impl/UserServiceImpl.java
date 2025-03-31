@@ -5,14 +5,16 @@ import com.itheima.backend.model.entity.User;
 import com.itheima.backend.service.UserService;
 import com.itheima.backend.utils.Result;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 @Service
 public class UserServiceImpl implements UserService {
+
+    @Autowired
     private UserDAO userDAO;
 
-    @Override
     public Result<User> register(User user) {
         // 1. 初始化返回值
         Result<User> result = new Result<>();
@@ -34,17 +36,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Result<User> login(User user) {
-        return null;
-    }
-
-    @Override
     public Result<User> update(User user) throws Exception {
         return null;
     }
 
     @Override
     public Result<User> isLogin(HttpSession session) {
+        return null;
+    }
+
+    @Override
+    public Result<User> login(User user){
         return null;
     }
 }
