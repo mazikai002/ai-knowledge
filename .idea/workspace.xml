@@ -5,43 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6274e712-8348-4540-a48c-ae59a0a28d76" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/web/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/backend_Web_exploded.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../mazikai/ai-knowledge/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/BackendApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/controller/v1/HelloAPI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/controller/v1/UserAPI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/dao/UserDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/model/entity/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/model/vo/DocVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/service/DocService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/service/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/service/impl/DocServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/service/impl/UserServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mazikai/ai-knowledge/backend/target/classes/com/itheima/backend/utils/Result.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/BackendApplication" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/BackendApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/v1/DocAPI" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/v1/HelloAPI" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/v1/HelloAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/v1/UserAPI" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/v1/UserAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/model/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/DocService" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/DocService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/impl/DocServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/utils/Result" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/utils/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/itheima/backend/BackendApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/itheima/backend/common/RestResult.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/itheima/backend/controller/v1/Doc.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/itheima/backend/controller/v1/Hello.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/itheima/backend/model/vo/DocVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/itheima/backend/service/DocService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/itheima/backend/service/impl/DocServiceImpl.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +15,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/model/entity/User.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -89,7 +57,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.16894531",
     "project.structure.side.proportion": "0.23554301",
-    "settings.editor.selected.configurable": "MavenSettings",
+    "settings.editor.selected.configurable": "通义灵码",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -143,7 +111,10 @@
       <workItem from="1743357391023" duration="191000" />
       <workItem from="1743437116323" duration="836000" />
       <workItem from="1743437976506" duration="1313000" />
-      <workItem from="1743439532860" duration="1652000" />
+      <workItem from="1743439532860" duration="2443000" />
+      <workItem from="1743441985957" duration="94000" />
+      <workItem from="1743442090716" duration="109000" />
+      <workItem from="1743442204595" duration="368000" />
     </task>
     <servers />
   </component>

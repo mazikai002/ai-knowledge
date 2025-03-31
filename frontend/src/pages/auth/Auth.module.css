@@ -1,0 +1,91 @@
+.authContainer {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.authCard {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.authHeader {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.authHeader h2 {
+  margin-bottom: 8px !important;
+  color: #333;
+  font-weight: 600;
+}
+
+.authCard :global(.ant-input-affix-wrapper) {
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.authCard :global(.ant-btn) {
+  border-radius: 6px;
+  height: 44px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.authCard :global(.ant-form-item) {
+  margin-bottom: 20px;
+}
+
+.authCard :global(.ant-input-prefix) {
+  color: #666;
+}
+
+.authCard :global(.ant-card-body) {
+  padding: 32px;
+}
+
+.authFooter {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.authFooter :global(.ant-btn-link) {
+  padding: 0 8px;
+  height: auto;
+  font-size: 16px;
+  color: #1890ff;
+}
+
+.authFooter :global(.ant-typography) {
+  font-size: 16px;
+  color: #666;
+}
+
+.authCard :global(.ant-input) {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.authCard :global(.ant-input-password) {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.authCard :global(.ant-btn-primary) {
+  background: #1890ff;
+  border-color: #1890ff;
+  box-shadow: 0 2px 8px rgba(24, 144, 255, 0.35);
+}
+
+.authCard :global(.ant-btn-primary:hover) {
+  background: #40a9ff;
+  border-color: #40a9ff;
+  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.45);
+} 
