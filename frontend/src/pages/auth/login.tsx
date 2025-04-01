@@ -4,6 +4,7 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { motion } from 'framer-motion';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import styles from './Auth.module.css';
+import { userService } from '../../service/userService';
 
 const { Title, Text } = Typography;
 
@@ -15,14 +16,20 @@ const LoginPage: React.FC = () => {
   const onFinish = async (values: any) => {
     setLoading(true);
     try {
-      // TODO: 实现登录逻辑
-      console.log('登录信息:', values);
-      // 模拟登录成功
-      localStorage.setItem('token', 'dummy-token');
-      message.success('登录成功！');
-      // 从之前的页面返回，如果没有则跳转到首页
-      const from = (location.state as any)?.from?.pathname || '/';
-      navigate(from, { replace: true });
+      const response = await userService.login({
+        username: values.username,
+        password: values.password
+      });
+
+      if (response.success) {
+        // 登录成功，存储用户信息
+        localStorage.setItem('userInfo', JSON.stringify(response.data));
+        message.success(response.message || '登录成功！');
+        // 直接跳转到首页（AI对话框界面）
+        navigate('/home', { replace: true });
+      } else {
+        message.error(response.message || '登录失败，请重试！');
+      }
     } catch (error) {
       message.error('登录失败，请重试！');
     } finally {

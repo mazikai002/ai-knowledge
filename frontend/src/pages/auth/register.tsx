@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Card, message, Typography } from 'antd';
-import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './Auth.module.css';
+import { userService } from '../../service/userService';
 
 const { Title, Text } = Typography;
 
@@ -14,12 +15,19 @@ const RegisterPage: React.FC = () => {
   const onFinish = async (values: any) => {
     setLoading(true);
     try {
-      // TODO: 实现注册逻辑
-      console.log('注册信息:', values);
-      message.success('注册成功！');
-      // 注册成功后自动登录
-      localStorage.setItem('token', 'dummy-token');
-      navigate('/', { replace: true });
+      // 调用注册接口
+      const response = await userService.register({
+        username: values.username,
+        password: values.password
+      });
+
+      if (response.success) {
+        message.success('注册成功！');
+        // 注册成功后跳转到登录页
+        navigate('/auth/login', { replace: true });
+      } else {
+        message.error(response.message || '注册失败，请重试！');
+      }
     } catch (error) {
       message.error('注册失败，请重试！');
     } finally {
@@ -47,7 +55,10 @@ const RegisterPage: React.FC = () => {
           >
             <Form.Item
               name="username"
-              rules={[{ required: true, message: '请输入用户名！' }]}
+              rules={[
+                { required: true, message: '请输入用户名！' },
+                { min: 3, message: '用户名长度不能小于3位！' }
+              ]}
             >
               <Input
                 prefix={<UserOutlined />}
@@ -57,24 +68,10 @@ const RegisterPage: React.FC = () => {
             </Form.Item>
 
             <Form.Item
-              name="email"
-              rules={[
-                { required: true, message: '请输入邮箱！' },
-                { type: 'email', message: '请输入有效的邮箱地址！' }
-              ]}
-            >
-              <Input
-                prefix={<MailOutlined />}
-                placeholder="邮箱"
-                size="large"
-              />
-            </Form.Item>
-
-            <Form.Item
               name="password"
               rules={[
                 { required: true, message: '请输入密码！' },
-                { min: 6, message: '密码长度不能小于6位！' }
+                { min: 8, message: '密码长度不能小于8位！' }
               ]}
             >
               <Input.Password

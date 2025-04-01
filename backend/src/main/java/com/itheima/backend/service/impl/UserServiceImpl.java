@@ -46,7 +46,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Result<User> login(User user){
-        return null;
+    public Result<User> login(User user) {
+        // 1. 初始化返回值
+        Result<User> result = new Result<>();
+
+        // 2. 从数据库查找用户
+        User getUser = userDAO.getByUsername(user.getUsername());
+        if (getUser == null) {  // 如果用户不存在
+            result.setResultFailed("用户不存在！");
+            return result;
+        }
+
+        // 3. 验证密码
+        String encryptedPassword = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
+        if (!getUser.getPassword().equals(encryptedPassword)) {  // 如果密码不正确
+            result.setResultFailed("密码错误！");
+            return result;
+        }
+
+        // 4. 登录成功
+        result.setResultSuccess("登录成功！", getUser);
+        return result;
     }
 }

@@ -4,36 +4,32 @@ import styles from './Background.module.css';
 
 const backgrounds = [
   {
-    url: 'https://images.pexels.com/photos/1287075/pexels-photo-1287075.jpeg',
+    url: '/images/backgrounds/alps.jpg',
     description: '瑞士阿尔卑斯山脉'
   },
   {
-    url: 'https://images.pexels.com/photos/1287076/pexels-photo-1287076.jpeg',
+    url: '/images/backgrounds/banff.jpg',
     description: '加拿大班夫国家公园'
   },
   {
-    url: 'https://images.pexels.com/photos/1287077/pexels-photo-1287077.jpeg',
+    url: '/images/backgrounds/yosemite.jpg',
     description: '美国优胜美地国家公园'
   },
   {
-    url: 'https://images.pexels.com/photos/1287078/pexels-photo-1287078.jpeg',
+    url: '/images/backgrounds/aurora.jpg',
     description: '冰岛极光'
   },
   {
-    url: 'https://images.pexels.com/photos/1287079/pexels-photo-1287079.jpeg',
+    url: '/images/backgrounds/milford.jpg',
     description: '新西兰米尔福德峡湾'
   },
   {
-    url: 'https://images.pexels.com/photos/1287080/pexels-photo-1287080.jpeg',
+    url: '/images/backgrounds/maldives.jpg',
     description: '马尔代夫环礁'
   },
   {
-    url: 'https://images.pexels.com/photos/1287081/pexels-photo-1287081.jpeg',
+    url: '/images/backgrounds/grand-canyon.jpg',
     description: '美国大峡谷'
-  },
-  {
-    url: 'https://images.pexels.com/photos/1287082/pexels-photo-1287082.jpeg',
-    description: '挪威峡湾'
   }
 ];
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @RestController
@@ -22,6 +23,23 @@ public class UserAPI {
 
     @Autowired
     private UserService userService;
+
+    /**
+     * 用户登录
+     *
+     * @param user    传入登录用户信息
+     * @param session 会话对象
+     * @return 登录结果
+     */
+    @PostMapping(value = "/login", produces = "application/json")
+    public Result<User> login(@RequestBody @Valid User user, HttpSession session) {
+        Result<User> result = userService.login(user);
+        if (result.isSuccess()) {
+            // 登录成功，将用户信息存入session
+            session.setAttribute(SESSION_NAME, result.getData());
+        }
+        return result;
+    }
 
     /**
      * 用户注册

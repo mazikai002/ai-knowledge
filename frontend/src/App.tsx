@@ -19,7 +19,7 @@ const App: React.FC = () => {
 
           {/* 受保护的路由 */}
           <Route
-            path="/"
+            path="/home"
             element={
               <AuthGuard>
                 <HomePage />
@@ -35,8 +35,11 @@ const App: React.FC = () => {
             }
           />
 
-          {/* 404 页面 */}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          {/* 根路径重定向到登录页面 */}
+          <Route path="/" element={<Navigate to="/auth/login" replace />} />
+
+          {/* 404 页面重定向到登录页面 */}
+          <Route path="*" element={<Navigate to="/auth/login" replace />} />
         </Routes>
       </Router>
     </>
