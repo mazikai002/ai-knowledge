@@ -1,18 +1,21 @@
 package com.itheima.backend.service.impl;
 
-import com.itheima.backend.entity.Conversation;
-import com.itheima.backend.entity.Message;
-import com.itheima.backend.repository.ConversationRepository;
-import com.itheima.backend.repository.MessageRepository;
+import com.itheima.backend.model.entity.Conversation;
+import com.itheima.backend.model.entity.Message;
+import com.itheima.backend.model.vo.MessageVO;
+import com.itheima.backend.mapper.ConversationMapper;
+import com.itheima.backend.mapper.MessageMapper;
 import com.itheima.backend.service.AIService;
-import com.itheima.backend.service.AIModelService;
+import com.itheima.backend.service.ex.BusinessException;
+import com.itheima.backend.model.converter.MessageConverter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * AI服务实现类
@@ -23,10 +26,10 @@ import java.util.List;
 public class AIServiceImpl implements AIService {
 
     @Autowired
-    private ConversationRepository conversationRepository;
+    private ConversationMapper conversationMapper;
 
     @Autowired
-    private MessageRepository messageRepository;
+    private MessageMapper messageMapper;
 
     @Autowired
     private AIModelService aiModelService;
@@ -36,46 +39,44 @@ public class AIServiceImpl implements AIService {
      *
      * @param conversationId 对话ID
      * @param content 消息内容
-     * @param model 使用的AI模型
      * @return AI响应消息
      */
     @Override
     @Transactional
-    public Message sendMessage(Long conversationId, String content, String model) {
-        try {
-            // 查找对话
-            Conversation conversation = conversationRepository.findById(conversationId)
-                .orElseThrow(() -> new RuntimeException("未找到对话"));
-
-            // 保存用户消息
-            Message userMessage = new Message();
-            userMessage.setConversationId(conversationId);
-            userMessage.setContent(content);
-            userMessage.setRole("user");
-            userMessage.setTimestamp(LocalDateTime.now());
-            messageRepository.save(userMessage);
-
-            // 调用AI模型获取响应
-            String aiResponse = aiModelService.callModel(model, content);
-
-            // 保存AI响应
-            Message aiMessage = new Message();
-            aiMessage.setConversationId(conversationId);
-            aiMessage.setContent(aiResponse);
-            aiMessage.setRole("assistant");
-            aiMessage.setTimestamp(LocalDateTime.now());
-            messageRepository.save(aiMessage);
-
-            // 更新对话的最后消息和时间戳
-            conversation.setLastMessage(content);
-            conversation.setTimestamp(LocalDateTime.now());
-            conversationRepository.save(conversation);
-
-            return aiMessage;
-        } catch (Exception e) {
-            log.error("发送消息时发生错误: {}", e.getMessage(), e);
-            throw new RuntimeException("发送消息失败", e);
+    public MessageVO sendMessage(Long conversationId, String content) {
+        // 获取会话
+        Conversation conversation = conversationMapper.findById(conversationId);
+        if (conversation == null) {
+            throw new BusinessException(400, "会话不存在");
         }
+
+        // 保存用户消息
+        Message userMessage = new Message();
+        userMessage.setConversationId(conversationId);
+        userMessage.setRole("user");
+        userMessage.setContent(content);
+        userMessage.setCreatedAt(LocalDateTime.now());
+        messageMapper.insert(userMessage);
+
+        // 获取历史消息
+        List<Message> history = messageMapper.findByConversationId(conversationId);
+
+        // 调用AI模型获取回复
+        String aiResponse = aiModelService.callModel("gpt-4", content);
+
+        // 保存AI回复
+        Message aiMessage = new Message();
+        aiMessage.setConversationId(conversationId);
+        aiMessage.setRole("assistant");
+        aiMessage.setContent(aiResponse);
+        aiMessage.setCreatedAt(LocalDateTime.now());
+        messageMapper.insert(aiMessage);
+
+        // 更新会话时间
+        conversation.setUpdatedAt(LocalDateTime.now());
+        conversationMapper.update(conversation);
+
+        return MessageConverter.toVO(aiMessage);
     }
 
     /**
@@ -101,8 +102,7 @@ public class AIServiceImpl implements AIService {
     @Override
     public String retrieveFromKnowledgeBase(String query) {
         // TODO: 实现知识库检索逻辑
-        log.info("从知识库检索: {}", query);
-        return "检索结果";
+        return null;
     }
 
     /**
@@ -117,5 +117,29 @@ public class AIServiceImpl implements AIService {
         // TODO: 实现文档删除逻辑
         log.info("删除文档: {}", fileId);
         return "文档删除成功";
+    }
+
+    @Override
+    @Transactional
+    public void deleteConversation(Long conversationId) {
+        // 删除会话下的所有消息
+        messageMapper.deleteByConversationId(conversationId);
+        
+        // 删除会话
+        conversationMapper.deleteById(conversationId);
+    }
+
+    @Override
+    public List<MessageVO> getConversationHistory(Long conversationId) {
+        List<Message> messages = messageMapper.findByConversationId(conversationId);
+        return messages.stream()
+            .map(MessageConverter::toVO)
+            .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional
+    public void processDocument(String title, String content) {
+        // TODO: 实现文档处理逻辑
     }
 } 

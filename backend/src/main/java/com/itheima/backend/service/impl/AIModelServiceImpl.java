@@ -20,7 +20,7 @@ import java.util.Map;
  */
 @Slf4j
 @Service
-public class AIModelService {
+public class AIModelServiceImpl {
 
     @Autowired
     private AIModelConfig aiConfig;
@@ -201,8 +201,7 @@ public class AIModelService {
     private String extractOpenAIResponse(Map<String, Object> response) {
         try {
             return (String) ((Map<String, Object>) ((Object[]) response.get("choices"))[0])
-                .get("message")
-                .get("content");
+                .get("message");
         } catch (Exception e) {
             log.error("提取OpenAI响应时发生错误: {}", e.getMessage());
             throw new RuntimeException("提取OpenAI响应失败");
@@ -217,8 +216,7 @@ public class AIModelService {
      */
     private String extractAnthropicResponse(Map<String, Object> response) {
         try {
-            return (String) ((Object[]) response.get("content"))[0]
-                .get("text");
+            return (String) ((Object[]) response.get("content"))[0];
         } catch (Exception e) {
             log.error("提取Anthropic响应时发生错误: {}", e.getMessage());
             throw new RuntimeException("提取Anthropic响应失败");

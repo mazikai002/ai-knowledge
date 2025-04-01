@@ -1,6 +1,6 @@
 package com.itheima.backend.mapper;
 
-import com.itheima.backend.entity.Message;
+import com.itheima.backend.model.entity.Message;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

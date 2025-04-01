@@ -1,44 +1,57 @@
 package com.itheima.backend.service;
 
-import com.itheima.backend.model.Message;
-import com.itheima.backend.model.Conversation;
+import com.itheima.backend.model.vo.MessageVO;
+import java.util.List;
 
 /**
  * AI服务接口
- * 提供与AI模型交互的核心功能
  */
 public interface AIService {
+    
     /**
-     * 发送消息并获取AI响应
+     * 发送消息并获取AI回复
      *
-     * @param conversationId 对话ID
+     * @param conversationId 会话ID
      * @param content 消息内容
-     * @param model 使用的AI模型
-     * @return AI响应消息
+     * @return AI回复消息
      */
-    Message sendMessage(Long conversationId, String content, String model);
-
+    MessageVO sendMessage(Long conversationId, String content);
+    
     /**
-     * 处理文档并添加到知识库
+     * 删除会话
      *
-     * @param fileId 文件ID
-     * @return 处理结果
+     * @param conversationId 会话ID
      */
-    String processDocument(Long fileId);
-
+    void deleteConversation(Long conversationId);
+    
     /**
-     * 从知识库中检索相关信息
+     * 获取会话历史记录
+     *
+     * @param conversationId 会话ID
+     * @return 消息列表
+     */
+    List<MessageVO> getConversationHistory(Long conversationId);
+    
+    /**
+     * 处理文档
+     *
+     * @param title 文档标题
+     * @param content 文档内容
+     */
+    void processDocument(String title, String content);
+    
+    /**
+     * 从知识库中检索信息
      *
      * @param query 查询内容
-     * @return 相关文档内容
+     * @return 检索结果
      */
     String retrieveFromKnowledgeBase(String query);
-
+    
     /**
-     * 删除知识库中的文档
+     * 删除文档
      *
-     * @param fileId 文件ID
-     * @return 删除结果
+     * @param documentId 文档ID
      */
-    String deleteDocument(Long fileId);
+    void deleteDocument(Long documentId);
 } 
