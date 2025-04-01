@@ -25,8 +25,8 @@ const LoginPage: React.FC = () => {
         // 登录成功，存储用户信息
         localStorage.setItem('userInfo', JSON.stringify(response.data));
         message.success(response.message || '登录成功！');
-        // 直接跳转到首页（AI对话框界面）
-        navigate('/home', { replace: true });
+        // 直接跳转到聊天页面（AI对话框界面）
+        navigate('/chat', { replace: true });
       } else {
         message.error(response.message || '登录失败，请重试！');
       }

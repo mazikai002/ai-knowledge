@@ -1,15 +1,15 @@
-package com.itheima.backend.model.vo;
+package com.itheima.backend.model.entity;
 
 import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-public class ConversationVO {
+public class Conversation {
     private Long id;
     private String title;
     private String lastMessage;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private List<MessageVO> messages;
-}
+    private List<Message> messages;
+} 

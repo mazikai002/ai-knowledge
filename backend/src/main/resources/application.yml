@@ -1,17 +1,16 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: "backend"
 
-  ai:
-    openai:
-      api-key: "sk-17VtRFAJyEzqXnum03vpkoU1MCZZHVSliGovbVxxadFJLZl6"
-
   datasource:
-    url: jdbc:mysql://localhost:3306/ai-knowledge?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-    username: root  # 替换为你的数据库用户名
-    password: 123456  # 替换为你的数据库密码
-    driver-class-name: com.mysql.cj.jdbc.Driver  # MySQL 驱动类
-    type: com.alibaba.druid.pool.DruidDataSource  # 使用 Druid 连接池
+    url: jdbc:mysql://localhost:3306/ai_knowledge?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
 
     druid:
       initial-size: 5
@@ -20,13 +19,83 @@ spring:
       max-wait: 60000
       time-between-eviction-runs-millis: 60000
       min-evictable-idle-time-millis: 300000
-      validation-query: SELECT 1 FROM DUAL
+      validation-query: SELECT 1
       test-while-idle: true
       test-on-borrow: false
       test-on-return: false
       pool-prepared-statements: true
       max-pool-prepared-statement-per-connection-size: 20
+      filters: stat,wall
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
 
   jackson:
     serialization:
-      fail-on-empty-beans: false  # 允许序列化空对象
+      fail-on-empty-beans: false
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.itheima.backend.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+openai:
+  api:
+    key: your-api-key-here  # 请替换为您的OpenAI API密钥
+
+ai:
+  openai-api-key: ${OPENAI_API_KEY}
+  anthropic-api-key: ${ANTHROPIC_API_KEY}
+  google-api-key: ${GOOGLE_API_KEY}
+  default-model: gpt-4
+
+  gpt4:
+    api-key: ${OPENAI_API_KEY}
+    endpoint: https://api.openai.com/v1/chat/completions
+    model: gpt-4
+    max-tokens: 2000
+    temperature: 0.7
+
+  gpt35:
+    api-key: ${OPENAI_API_KEY}
+    endpoint: https://api.openai.com/v1/chat/completions
+    model: gpt-3.5-turbo
+    max-tokens: 2000
+    temperature: 0.7
+
+  claude3:
+    api-key: ${ANTHROPIC_API_KEY}
+    endpoint: https://api.anthropic.com/v1/messages
+    model: claude-3-opus-20240229
+    max-tokens: 2000
+    temperature: 0.7
+
+  gemini:
+    api-key: ${GOOGLE_API_KEY}
+    endpoint: https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent
+    model: gemini-pro
+    max-tokens: 2000
+    temperature: 0.7
+
+  llama2:
+    api-key: ${LLAMA_API_KEY}
+    endpoint: https://api.llama.ai/v1/chat/completions
+    model: llama-2-70b-chat
+    max-tokens: 2000
+    temperature: 0.7
+
+  qwen:
+    api-key: ${QWEN_API_KEY}
+    endpoint: https://api.qwen.ai/v1/chat/completions
+    model: qwen-72b-chat
+    max-tokens: 2000
+    temperature: 0.7
