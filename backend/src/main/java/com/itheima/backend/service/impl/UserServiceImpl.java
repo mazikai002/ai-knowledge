@@ -1,9 +1,9 @@
 package com.itheima.backend.service.impl;
 
-import com.itheima.backend.dao.UserDAO;
+import com.itheima.backend.mapper.UserMapper;
 import com.itheima.backend.model.entity.User;
 import com.itheima.backend.service.UserService;
-import com.itheima.backend.utils.Result;
+import com.itheima.backend.common.Result;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,14 +13,14 @@ import org.springframework.util.DigestUtils;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserDAO userDAO;
+    private UserMapper userMapper;
 
     public Result<User> register(User user) {
         // 1. 初始化返回值
         Result<User> result = new Result<>();
 
         // 2. 现在数据库查找用户是否存在
-        User getUser = userDAO.getByUsername(user.getUsername());
+        User getUser = userMapper.findByUsername(user.getUsername());
         if (getUser != null) {  // 如果用户存在，直接返回
             result.setResultFailed("用户已存在！");
             return result;

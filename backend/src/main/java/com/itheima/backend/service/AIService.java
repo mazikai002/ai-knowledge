@@ -9,13 +9,39 @@ import java.util.List;
 public interface AIService {
     
     /**
-     * 发送消息并获取AI回复
+     * 发送消息并获取AI响应
      *
-     * @param conversationId 会话ID
+     * @param conversationId 对话ID
      * @param content 消息内容
-     * @return AI回复消息
+     * @return AI响应消息
      */
     MessageVO sendMessage(Long conversationId, String content);
+    
+    /**
+     * 处理文档并添加到知识库
+     *
+     * @param title 文档标题
+     * @param content 文档内容
+     * @param fileType 文件类型
+     * @return 处理结果
+     */
+    String processDocument(String title, String content, String fileType);
+    
+    /**
+     * 从知识库中检索相关信息
+     *
+     * @param query 查询内容
+     * @return 相关文档内容
+     */
+    String retrieveFromKnowledgeBase(String query);
+    
+    /**
+     * 删除知识库中的文档
+     *
+     * @param fileId 文件ID
+     * @return 删除结果
+     */
+    String deleteDocument(Long fileId);
     
     /**
      * 删除会话
@@ -31,27 +57,4 @@ public interface AIService {
      * @return 消息列表
      */
     List<MessageVO> getConversationHistory(Long conversationId);
-    
-    /**
-     * 处理文档
-     *
-     * @param title 文档标题
-     * @param content 文档内容
-     */
-    void processDocument(String title, String content);
-    
-    /**
-     * 从知识库中检索信息
-     *
-     * @param query 查询内容
-     * @return 检索结果
-     */
-    String retrieveFromKnowledgeBase(String query);
-    
-    /**
-     * 删除文档
-     *
-     * @param documentId 文档ID
-     */
-    void deleteDocument(Long documentId);
 } 

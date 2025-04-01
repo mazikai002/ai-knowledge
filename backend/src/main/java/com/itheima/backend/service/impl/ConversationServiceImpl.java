@@ -1,7 +1,8 @@
 package com.itheima.backend.service.impl;
 
-import com.itheima.backend.dao.ConversationMapper;
-import com.itheima.backend.dao.MessageMapper;
+import com.itheima.backend.mapper.ConversationMapper;
+import com.itheima.backend.mapper.MessageMapper;
+import com.itheima.backend.mapper.MessageMapper;
 import com.itheima.backend.model.dto.CreateConversationDTO;
 import com.itheima.backend.model.dto.SendMessageDTO;
 import com.itheima.backend.model.entity.Conversation;

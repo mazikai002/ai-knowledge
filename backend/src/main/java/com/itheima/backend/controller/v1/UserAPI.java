@@ -2,7 +2,7 @@ package com.itheima.backend.controller.v1;
 
 import com.itheima.backend.model.entity.User;
 import com.itheima.backend.service.UserService;
-import com.itheima.backend.utils.Result;
+import com.itheima.backend.common.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
