@@ -1,6 +1,6 @@
 # AI 知识库系统
 
-基于 Spring Boot + Vue3 的智能知识库系统，支持文档管理、知识检索和 AI 对话等功能。
+基于 Spring Boot + React 的智能知识库系统，支持文档管理、知识检索和 AI 对话等功能。
 
 ## 功能特性
 
@@ -28,11 +28,11 @@
 - Jakarta Validation
 
 ### 前端
-- Vue 3
+- React 18
 - TypeScript
-- Element Plus
+- Ant Design
 - Vite
-- Pinia
+- Redux Toolkit
 
 ## 项目结构
 
@@ -44,8 +44,14 @@ ai-knowledge/
 │   │   │   ├── java/
 │   │   │   │   └── com/itheima/backend/
 │   │   │   │       ├── common/          # 通用类
+│   │   │   │       │   ├── constant/    # 常量类
+│   │   │   │       │   ├── enums/       # 枚举类
+│   │   │   │       │   └── utils/       # 工具类
 │   │   │   │       ├── config/          # 配置类
 │   │   │   │       ├── controller/      # 控制器
+│   │   │   │       │   ├── auth/        # 认证相关
+│   │   │   │       │   ├── chat/        # 对话相关
+│   │   │   │       │   └── knowledge/   # 知识库相关
 │   │   │   │       ├── mapper/          # MyBatis映射
 │   │   │   │       ├── model/           # 数据模型
 │   │   │   │       │   ├── dto/         # 数据传输对象
@@ -53,6 +59,9 @@ ai-knowledge/
 │   │   │   │       │   ├── vo/          # 视图对象
 │   │   │   │       │   └── converter/   # 对象转换器
 │   │   │   │       └── service/         # 服务层
+│   │   │   │           ├── auth/        # 认证服务
+│   │   │   │           ├── chat/        # 对话服务
+│   │   │   │           └── knowledge/   # 知识库服务
 │   │   │   └── resources/
 │   │   │       ├── mapper/              # MyBatis映射文件
 │   │   │       └── application.yml      # 配置文件
@@ -62,10 +71,10 @@ ai-knowledge/
     │   ├── api/           # API接口
     │   ├── assets/        # 静态资源
     │   ├── components/    # 组件
-    │   ├── router/        # 路由配置
-    │   ├── stores/        # 状态管理
+    │   ├── pages/         # 页面
+    │   ├── store/         # 状态管理
     │   ├── types/         # 类型定义
-    │   └── views/         # 页面
+    │   └── utils/         # 工具函数
     └── package.json       # 项目配置
 ```
 
@@ -78,54 +87,17 @@ ai-knowledge/
 - Maven 3.8+
 
 ### 后端启动
-1. 创建数据库
-```sql
-CREATE DATABASE ai_knowledge DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-```
-
-2. 修改配置
-```yaml
-# application.yml
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/ai_knowledge
-    username: your_username
-    password: your_password
-```
-
-3. 启动项目
 ```bash
 cd backend
 mvn spring-boot:run
 ```
 
 ### 前端启动
-1. 安装依赖
 ```bash
 cd frontend
 npm install
-```
-
-2. 启动开发服务器
-```bash
 npm run dev
 ```
-
-## 开发计划
-
-- [ ] 支持更多文档格式
-- [ ] 优化知识检索算法
-- [ ] 添加数据可视化功能
-- [ ] 支持团队协作
-- [ ] 添加文档版本控制
-
-## 贡献指南
-
-1. Fork 本仓库
-2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 创建 Pull Request
 
 ## 许可证
 
