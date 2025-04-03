@@ -1,5 +1,6 @@
 package com.itheima.backend.common;
 
+import com.itheima.backend.common.constant.CommonConstant;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,31 @@ public class Result<T> {
      * 数据
      */
     private T data;
+    
+    /**
+     * 判断是否成功
+     */
+    public boolean isSuccess() {
+        return code == CommonConstant.SUCCESS_CODE;
+    }
+    
+    /**
+     * 设置失败结果
+     */
+    public void setResultFailed(String message) {
+        this.code = CommonConstant.ERROR_CODE;
+        this.message = message;
+        this.data = null;
+    }
+    
+    /**
+     * 设置成功结果
+     */
+    public void setResultSuccess(String message, T data) {
+        this.code = CommonConstant.SUCCESS_CODE;
+        this.message = message;
+        this.data = data;
+    }
     
     /**
      * 成功响应

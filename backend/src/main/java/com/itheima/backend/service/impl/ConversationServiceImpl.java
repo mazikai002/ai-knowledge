@@ -1,7 +1,7 @@
 package com.itheima.backend.service.impl;
 
+import com.itheima.backend.common.enums.MessageTypeEnum;
 import com.itheima.backend.mapper.ConversationMapper;
-import com.itheima.backend.mapper.MessageMapper;
 import com.itheima.backend.mapper.MessageMapper;
 import com.itheima.backend.model.dto.CreateConversationDTO;
 import com.itheima.backend.model.dto.SendMessageDTO;
@@ -11,35 +11,47 @@ import com.itheima.backend.model.vo.ConversationVO;
 import com.itheima.backend.model.vo.MessageVO;
 import com.itheima.backend.service.AIService;
 import com.itheima.backend.service.ConversationService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.itheima.backend.service.ex.BusinessException;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 会话服务实现类
+ */
+@Slf4j
 @Service
+@RequiredArgsConstructor
 public class ConversationServiceImpl implements ConversationService {
-    @Autowired
-    private ConversationMapper conversationMapper;
-
-    @Autowired
-    private MessageMapper messageMapper;
-
-    @Autowired
-    private AIService aiService;
+    
+    private final ConversationMapper conversationMapper;
+    private final MessageMapper messageMapper;
+    private final AIService aiService;
 
     @Override
     public List<ConversationVO> getAllConversations() {
+        log.info("获取所有会话");
         return conversationMapper.findAll().stream()
                 .map(this::convertToVO)
                 .collect(Collectors.toList());
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public ConversationVO createConversation(CreateConversationDTO dto) {
+        log.info("创建会话: {}", dto);
+        
+        // 参数校验
+        if (!StringUtils.hasText(dto.getTitle())) {
+            throw new BusinessException(400, "会话标题不能为空");
+        }
+        
         Conversation conversation = new Conversation();
         conversation.setTitle(dto.getTitle());
         conversation.setCreatedAt(LocalDateTime.now());
@@ -50,19 +62,40 @@ public class ConversationServiceImpl implements ConversationService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void deleteConversation(Long id) {
+        log.info("删除会话: {}", id);
+        
+        // 参数校验
+        if (id == null) {
+            throw new BusinessException(400, "会话ID不能为空");
+        }
+        
+        // 删除会话
         conversationMapper.deleteById(id);
+        
+        // 删除会话下的所有消息
+        messageMapper.deleteByConversationId(id);
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public MessageVO sendMessage(Long conversationId, SendMessageDTO dto) {
+        log.info("发送消息: conversationId={}, content={}", conversationId, dto.getContent());
+        
+        // 参数校验
+        if (conversationId == null) {
+            throw new BusinessException(400, "会话ID不能为空");
+        }
+        if (!StringUtils.hasText(dto.getContent())) {
+            throw new BusinessException(400, "消息内容不能为空");
+        }
+        
         // 保存用户消息
         Message userMessage = new Message();
         userMessage.setContent(dto.getContent());
-        userMessage.setType(Message.MessageType.USER);
-        userMessage.setModel(dto.getModel());
+        userMessage.setType(MessageTypeEnum.USER);
+        userMessage.setRole("user");
         userMessage.setCreatedAt(LocalDateTime.now());
         userMessage.setConversationId(conversationId);
         messageMapper.insert(userMessage);
@@ -71,22 +104,27 @@ public class ConversationServiceImpl implements ConversationService {
         List<Message> history = messageMapper.findByConversationId(conversationId);
 
         // 获取AI响应
-        Message aiMessage = aiService.generateResponse(dto.getContent(), dto.getModel(), history);
-        aiMessage.setConversationId(conversationId);
-        messageMapper.insert(aiMessage);
-
+        MessageVO aiResponse = aiService.sendMessage(conversationId, dto.getContent());
+        
         // 更新对话的最后一条消息
-        Conversation conversation = new Conversation();
-        conversation.setId(conversationId);
-        conversation.setLastMessage(dto.getContent());
-        conversation.setUpdatedAt(LocalDateTime.now());
-        conversationMapper.updateLastMessage(conversation);
+        Conversation conversation = conversationMapper.findById(conversationId);
+        if (conversation != null) {
+            conversation.setLastMessage(dto.getContent());
+            conversation.setUpdatedAt(LocalDateTime.now());
+            conversationMapper.update(conversation);
+        }
 
-        return convertToMessageVO(aiMessage);
+        return aiResponse;
     }
 
     @Override
     public List<ConversationVO> searchConversations(String keyword) {
+        log.info("搜索会话: {}", keyword);
+        
+        if (!StringUtils.hasText(keyword)) {
+            return getAllConversations();
+        }
+        
         return conversationMapper.search(keyword).stream()
                 .map(this::convertToVO)
                 .collect(Collectors.toList());
@@ -94,10 +132,17 @@ public class ConversationServiceImpl implements ConversationService {
 
     @Override
     public String exportConversation(Long id) {
-        Conversation conversation = conversationMapper.findAll().stream()
-                .filter(c -> c.getId().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("Conversation not found"));
+        log.info("导出会话: {}", id);
+        
+        // 参数校验
+        if (id == null) {
+            throw new BusinessException(400, "会话ID不能为空");
+        }
+        
+        Conversation conversation = conversationMapper.findById(id);
+        if (conversation == null) {
+            throw new BusinessException(400, "会话不存在");
+        }
 
         List<Message> messages = messageMapper.findByConversationId(id);
 
@@ -105,8 +150,8 @@ public class ConversationServiceImpl implements ConversationService {
         export.append("对话标题: ").append(conversation.getTitle()).append("\n\n");
         
         for (Message message : messages) {
-            export.append(message.getType() == Message.MessageType.USER ? "用户" : "AI")
-                  .append(" (").append(message.getModel()).append("): ")
+            export.append(message.getType() == MessageTypeEnum.USER ? "用户" : "AI助手")
+                  .append(": ")
                   .append(message.getContent())
                   .append("\n\n");
         }
@@ -114,7 +159,14 @@ public class ConversationServiceImpl implements ConversationService {
         return export.toString();
     }
 
+    /**
+     * 将实体转换为VO
+     */
     private ConversationVO convertToVO(Conversation conversation) {
+        if (conversation == null) {
+            return null;
+        }
+        
         ConversationVO vo = new ConversationVO();
         vo.setId(conversation.getId());
         vo.setTitle(conversation.getTitle());
@@ -130,12 +182,18 @@ public class ConversationServiceImpl implements ConversationService {
         return vo;
     }
 
+    /**
+     * 将消息实体转换为VO
+     */
     private MessageVO convertToMessageVO(Message message) {
+        if (message == null) {
+            return null;
+        }
+        
         MessageVO vo = new MessageVO();
         vo.setId(message.getId());
+        vo.setRole(message.getRole());
         vo.setContent(message.getContent());
-        vo.setType(message.getType().name());
-        vo.setModel(message.getModel());
         vo.setCreatedAt(message.getCreatedAt());
         return vo;
     }

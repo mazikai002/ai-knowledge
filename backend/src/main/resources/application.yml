@@ -6,9 +6,9 @@ spring:
     name: "backend"
 
   datasource:
-    url: jdbc:mysql://localhost:3306/ai_knowledge?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/ai-knowledge?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: root
-    password: root
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 

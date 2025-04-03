@@ -55,4 +55,13 @@ public interface ConversationMapper {
      */
     @Delete("DELETE FROM conversation WHERE id = #{id}")
     int deleteById(Long id);
+    
+    /**
+     * 搜索会话
+     *
+     * @param keyword 关键词
+     * @return 会话列表
+     */
+    @Select("SELECT * FROM conversation WHERE title LIKE CONCAT('%', #{keyword}, '%') ORDER BY updated_at DESC")
+    List<Conversation> search(@Param("keyword") String keyword);
 } 

@@ -31,5 +31,6 @@ public class Conversation {
     
     private String lastMessage;
     
+    @OneToMany(mappedBy = "conversation", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Message> messages;
 } 

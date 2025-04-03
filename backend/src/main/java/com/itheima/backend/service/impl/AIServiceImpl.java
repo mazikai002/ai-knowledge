@@ -1,6 +1,7 @@
 package com.itheima.backend.service.impl;
 
 import com.itheima.backend.common.constant.BusinessConstant;
+import com.itheima.backend.common.enums.MessageTypeEnum;
 import com.itheima.backend.model.entity.Conversation;
 import com.itheima.backend.model.entity.Message;
 import com.itheima.backend.model.vo.MessageVO;
@@ -64,6 +65,7 @@ public class AIServiceImpl implements AIService {
         Message userMessage = new Message();
         userMessage.setConversationId(conversationId);
         userMessage.setRole(BusinessConstant.MESSAGE_ROLE_USER);
+        userMessage.setType(MessageTypeEnum.USER);
         userMessage.setContent(content);
         userMessage.setCreatedAt(LocalDateTime.now());
         messageMapper.insert(userMessage);
@@ -78,14 +80,17 @@ public class AIServiceImpl implements AIService {
         Message aiMessage = new Message();
         aiMessage.setConversationId(conversationId);
         aiMessage.setRole(BusinessConstant.MESSAGE_ROLE_ASSISTANT);
+        aiMessage.setType(MessageTypeEnum.ASSISTANT);
         aiMessage.setContent(aiResponse);
         aiMessage.setCreatedAt(LocalDateTime.now());
         messageMapper.insert(aiMessage);
 
-        // 更新会话时间
+        // 更新会话最后一条消息
+        conversation.setLastMessage(content);
         conversation.setUpdatedAt(LocalDateTime.now());
         conversationMapper.update(conversation);
 
+        // 返回AI回复消息
         return MessageConverter.toVO(aiMessage);
     }
 

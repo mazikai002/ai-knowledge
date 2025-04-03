@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes())); // 对用户密码进行加密存储
 
         // 3. 数据库操作
-        userDAO.add(user);
+        userMapper.insert(user);
         result.setResultSuccess("注册用户成功！", user);
         return result;
     }
@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
         Result<User> result = new Result<>();
 
         // 2. 从数据库查找用户
-        User getUser = userDAO.getByUsername(user.getUsername());
+        User getUser = userMapper.findByUsername(user.getUsername());
         if (getUser == null) {  // 如果用户不存在
             result.setResultFailed("用户不存在！");
             return result;
