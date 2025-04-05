@@ -4,7 +4,9 @@ import com.itheima.backend.common.PageQuery;
 import com.itheima.backend.common.PageResult;
 import com.itheima.backend.common.Result;
 import com.itheima.backend.model.dto.KnowledgeDTO;
+import com.itheima.backend.model.vo.KnowledgeSearchVO;
 import com.itheima.backend.model.vo.KnowledgeVO;
+import com.itheima.backend.service.KnowledgeSearchService;
 import com.itheima.backend.service.KnowledgeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 public class KnowledgeController {
     
     private final KnowledgeService knowledgeService;
+    private final KnowledgeSearchService knowledgeSearchService;
     
     /**
      * 创建知识
@@ -58,5 +61,16 @@ public class KnowledgeController {
     @GetMapping("/page")
     public Result<PageResult<KnowledgeVO>> pageKnowledge(PageQuery pageQuery) {
         return Result.success(knowledgeService.pageKnowledge(pageQuery));
+    }
+    
+    /**
+     * 搜索知识
+     */
+    @GetMapping("/search")
+    public Result<PageResult<KnowledgeSearchVO>> searchKnowledge(
+            @RequestParam String keyword,
+            @RequestParam(defaultValue = "1") Integer page,
+            @RequestParam(defaultValue = "10") Integer size) {
+        return Result.success(knowledgeSearchService.searchKnowledge(keyword, page, size));
     }
 } 

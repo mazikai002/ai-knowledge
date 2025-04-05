@@ -1,14 +1,19 @@
-package com.itheima.backend.mapper;
+package com.itheima.backend.repository.mybatis;
 
 import com.itheima.backend.model.entity.Conversation;
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
 /**
  * 会话 Mapper 接口
  */
-@Mapper
+// @Mapper 注解已通过@MapperScan在应用主类中全局配置，这里可以省略
 public interface ConversationMapper {
     
     /**

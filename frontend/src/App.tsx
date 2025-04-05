@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import HomePage from './pages/home/index';
 import ChatPage from './pages/chat/index';
+import KnowledgePage from './pages/knowledge/index';
 import LoginPage from './pages/auth/login';
 import RegisterPage from './pages/auth/register';
 import AuthGuard from './components/AuthGuard';
@@ -31,6 +32,14 @@ const App: React.FC = () => {
             element={
               <AuthGuard>
                 <ChatPage />
+              </AuthGuard>
+            }
+          />
+          <Route
+            path="/knowledge"
+            element={
+              <AuthGuard>
+                <KnowledgePage />
               </AuthGuard>
             }
           />

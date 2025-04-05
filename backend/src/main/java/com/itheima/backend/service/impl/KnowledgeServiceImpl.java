@@ -4,6 +4,7 @@ import com.itheima.backend.common.PageQuery;
 import com.itheima.backend.common.PageResult;
 import com.itheima.backend.model.dto.KnowledgeDTO;
 import com.itheima.backend.model.vo.KnowledgeVO;
+import com.itheima.backend.service.KnowledgeSearchService;
 import com.itheima.backend.service.KnowledgeService;
 import com.itheima.backend.service.ex.BusinessException;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,6 +24,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class KnowledgeServiceImpl implements KnowledgeService {
     
+    private final KnowledgeSearchService knowledgeSearchService;
+    
     @Override
     @Transactional(rollbackFor = Exception.class)
     public KnowledgeVO createKnowledge(KnowledgeDTO knowledgeDTO) {
@@ -31,7 +35,22 @@ public class KnowledgeServiceImpl implements KnowledgeService {
         // 3. 处理标签
         // 4. 返回创建结果
         log.info("创建知识: {}", knowledgeDTO);
-        return new KnowledgeVO();
+        KnowledgeVO vo = new KnowledgeVO();
+        vo.setId(1L); // 示例ID，实际应该是DB生成的ID
+        vo.setTitle(knowledgeDTO.getTitle());
+        vo.setContent(knowledgeDTO.getContent());
+        vo.setFileType(knowledgeDTO.getFileType());
+        vo.setTags(knowledgeDTO.getTags());
+        vo.setDescription(knowledgeDTO.getDescription());
+        vo.setCreateTime(LocalDateTime.now());
+        vo.setUpdateTime(LocalDateTime.now());
+        vo.setCreateBy(1L); // 示例创建者ID，实际应该是当前用户ID
+        vo.setCreateByName("管理员"); // 示例创建者名称，实际应该是当前用户名称
+        
+        // 索引到ES
+        knowledgeSearchService.indexKnowledge(vo);
+        
+        return vo;
     }
     
     @Override
@@ -47,7 +66,22 @@ public class KnowledgeServiceImpl implements KnowledgeService {
         // 3. 更新标签
         // 4. 返回更新结果
         log.info("更新知识: id={}, knowledge={}", id, knowledgeDTO);
-        return new KnowledgeVO();
+        KnowledgeVO vo = new KnowledgeVO();
+        vo.setId(id);
+        vo.setTitle(knowledgeDTO.getTitle());
+        vo.setContent(knowledgeDTO.getContent());
+        vo.setFileType(knowledgeDTO.getFileType());
+        vo.setTags(knowledgeDTO.getTags());
+        vo.setDescription(knowledgeDTO.getDescription());
+        vo.setCreateTime(LocalDateTime.now().minusDays(1)); // 示例创建时间
+        vo.setUpdateTime(LocalDateTime.now());
+        vo.setCreateBy(1L); // 示例创建者ID
+        vo.setCreateByName("管理员"); // 示例创建者名称
+        
+        // 索引到ES
+        knowledgeSearchService.indexKnowledge(vo);
+        
+        return vo;
     }
     
     @Override
@@ -62,6 +96,9 @@ public class KnowledgeServiceImpl implements KnowledgeService {
         // 2. 删除知识信息
         // 3. 删除相关标签
         log.info("删除知识: {}", id);
+        
+        // 删除ES索引
+        knowledgeSearchService.deleteKnowledgeIndex(id);
     }
     
     @Override
@@ -75,7 +112,18 @@ public class KnowledgeServiceImpl implements KnowledgeService {
         // 2. 查询相关标签
         // 3. 返回查询结果
         log.info("查询知识: {}", id);
-        return new KnowledgeVO();
+        KnowledgeVO vo = new KnowledgeVO();
+        vo.setId(id);
+        vo.setTitle("示例知识标题");
+        vo.setContent("示例知识内容");
+        vo.setFileType("txt");
+        vo.setTags("示例,标签");
+        vo.setDescription("示例知识描述");
+        vo.setCreateTime(LocalDateTime.now().minusDays(1));
+        vo.setUpdateTime(LocalDateTime.now());
+        vo.setCreateBy(1L);
+        vo.setCreateByName("管理员");
+        return vo;
     }
     
     @Override
@@ -86,6 +134,31 @@ public class KnowledgeServiceImpl implements KnowledgeService {
         // 3. 处理查询结果
         // 4. 返回分页结果
         log.info("分页查询知识: {}", pageQuery);
-        return new PageResult<>();
+        
+        List<KnowledgeVO> list = Arrays.asList(
+            createSampleKnowledge(1L, "示例知识1", "示例内容1"),
+            createSampleKnowledge(2L, "示例知识2", "示例内容2"),
+            createSampleKnowledge(3L, "示例知识3", "示例内容3")
+        );
+        
+        // 使用静态工厂方法创建PageResult
+        int pageNum = pageQuery.getPageNum();
+        int pageSize = pageQuery.getPageSize();
+        return PageResult.create(pageNum, pageSize, list.size(), list);
+    }
+    
+    private KnowledgeVO createSampleKnowledge(Long id, String title, String content) {
+        KnowledgeVO vo = new KnowledgeVO();
+        vo.setId(id);
+        vo.setTitle(title);
+        vo.setContent(content);
+        vo.setFileType("txt");
+        vo.setTags("示例,标签");
+        vo.setDescription("示例知识描述");
+        vo.setCreateTime(LocalDateTime.now().minusDays(1));
+        vo.setUpdateTime(LocalDateTime.now());
+        vo.setCreateBy(1L);
+        vo.setCreateByName("管理员");
+        return vo;
     }
 } 

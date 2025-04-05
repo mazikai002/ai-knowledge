@@ -1,9 +1,9 @@
 package com.itheima.backend.service.impl;
 
-import com.itheima.backend.mapper.UserMapper;
+import com.itheima.backend.common.Result;
+import com.itheima.backend.repository.mybatis.UserMapper;
 import com.itheima.backend.model.entity.User;
 import com.itheima.backend.service.UserService;
-import com.itheima.backend.common.Result;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Layout, theme } from "antd";
+import { Layout, theme, Button } from "antd";
+import { SearchOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 import { AIMessageContent } from "../chat/AiMessageContent.tsx";
 import { AiConversations } from "../chat/AiConversations.tsx";
 import {
@@ -14,6 +16,7 @@ export const Home: React.FC = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+  const navigate = useNavigate();
 
   const [conversations, setConversations] = useState(
     [] as ConversationMenuPayload[],
@@ -50,8 +53,15 @@ export const Home: React.FC = () => {
 
   return (
     <Layout style={{ height: "100%" }}>
-      <Header>
+      <Header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div style={{ color: "white", fontSize: "large" }}>企业AI知识库</div>
+        <Button 
+          type="primary" 
+          icon={<SearchOutlined />} 
+          onClick={() => navigate('/knowledge')}
+        >
+          知识库搜索
+        </Button>
       </Header>
       <Layout>
         <Sider width={"20%"}>

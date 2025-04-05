@@ -16,6 +16,7 @@
           <entry name="$USER_HOME$/Library/Maven/repository/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
         </processorPath>
         <module name="backend" />
+        <module name="ai-knowledge" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -24,6 +25,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ai-knowledge" options="-parameters" />
       <module name="backend" options="-parameters" />
       <module name="backend (1)" options="-parameters" />
     </option>
