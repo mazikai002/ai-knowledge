@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class KnowledgeVO {
     
     /**
-     * 知识ID
+     * 主键ID
      */
     private Long id;
     
@@ -39,6 +39,16 @@ public class KnowledgeVO {
      * 描述
      */
     private String description;
+    
+    /**
+     * 文件路径（MinIO对象存储路径）
+     */
+    private String filePath;
+    
+    /**
+     * 文件URL
+     */
+    private String fileUrl;
     
     /**
      * 创建时间

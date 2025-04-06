@@ -27,9 +27,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * 知识库搜索服务实现类
+ * 
+ * @author developer
+ * @date 2025/04/06
  */
 @Slf4j
 @Service
@@ -128,5 +132,37 @@ public class KnowledgeSearchServiceImpl implements KnowledgeSearchService {
         
         // 构建分页结果
         return PageResult.create(page, size, searchHits.getTotalHits(), resultList);
+    }
+    
+    /**
+     * 根据ID获取知识详情
+     *
+     * @param id 知识ID
+     * @return 知识详情VO
+     */
+    @Override
+    public KnowledgeVO getKnowledge(Long id) {
+        if (id == null) {
+            throw new BusinessException(400, "知识ID不能为空");
+        }
+        
+        log.info("开始获取知识详情: {}", id);
+        
+        // 从ES中查询文档
+        Optional<KnowledgeDocument> documentOptional = knowledgeRepository.findById(id);
+        
+        // 判断文档是否存在
+        if (!documentOptional.isPresent()) {
+            log.warn("知识文档不存在: {}", id);
+            throw new BusinessException(404, "知识文档不存在");
+        }
+        
+        // 将文档转换为VO
+        KnowledgeDocument document = documentOptional.get();
+        KnowledgeVO knowledgeVO = new KnowledgeVO();
+        BeanUtils.copyProperties(document, knowledgeVO);
+        
+        log.info("成功获取知识详情: {}", id);
+        return knowledgeVO;
     }
 } 

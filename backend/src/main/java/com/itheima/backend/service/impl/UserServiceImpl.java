@@ -1,10 +1,12 @@
 package com.itheima.backend.service.impl;
 
+import com.itheima.backend.common.constant.CommonConstant;
 import com.itheima.backend.common.Result;
+import com.itheima.backend.controller.v1.UserAPI;
 import com.itheima.backend.repository.mybatis.UserMapper;
 import com.itheima.backend.model.entity.User;
 import com.itheima.backend.service.UserService;
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;

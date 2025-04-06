@@ -24,13 +24,13 @@ public class KnowledgeDocument {
     /**
      * 标题
      */
-    @Field(type = FieldType.Text, analyzer = "ik_max_word", searchAnalyzer = "ik_smart")
+    @Field(type = FieldType.Text, analyzer = "standard", searchAnalyzer = "standard")
     private String title;
     
     /**
      * 内容
      */
-    @Field(type = FieldType.Text, analyzer = "ik_max_word", searchAnalyzer = "ik_smart")
+    @Field(type = FieldType.Text, analyzer = "standard", searchAnalyzer = "standard")
     private String content;
     
     /**
@@ -42,13 +42,13 @@ public class KnowledgeDocument {
     /**
      * 标签
      */
-    @Field(type = FieldType.Text, analyzer = "ik_max_word", searchAnalyzer = "ik_smart")
+    @Field(type = FieldType.Text, analyzer = "standard", searchAnalyzer = "standard")
     private String tags;
     
     /**
      * 描述
      */
-    @Field(type = FieldType.Text, analyzer = "ik_max_word", searchAnalyzer = "ik_smart")
+    @Field(type = FieldType.Text, analyzer = "standard", searchAnalyzer = "standard")
     private String description;
     
     /**

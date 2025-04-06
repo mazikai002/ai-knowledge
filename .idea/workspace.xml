@@ -5,21 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6274e712-8348-4540-a48c-ae59a0a28d76" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/BackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/BackendApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/KnowledgeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/KnowledgeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/mapper/ConversationMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/mapper/DocumentMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/mapper/MessageMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/mapper/UserMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/impl/AIServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/impl/AIServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/impl/ConversationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/impl/ConversationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/impl/KnowledgeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/impl/KnowledgeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/v1/UserAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/controller/v1/UserAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/model/document/KnowledgeDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/model/document/KnowledgeDocument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/model/dto/KnowledgeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/model/dto/KnowledgeDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/model/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/model/vo/KnowledgeVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/model/vo/KnowledgeVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/KnowledgeSearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/KnowledgeSearchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/impl/KnowledgeSearchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/impl/KnowledgeSearchServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/itheima/backend/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/home/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/home/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/chat/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/chat/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +59,8 @@
     "Maven.ai-knowledge [clean].executor": "Run",
     "Maven.ai-knowledge [package].executor": "Run",
     "Maven.ai-knowledge [validate].executor": "Run",
+    "Maven.ai-knowledge-backend [clean].executor": "Run",
+    "Maven.ai-knowledge-backend [package].executor": "Run",
     "Maven.backend [clean].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
@@ -161,7 +163,9 @@
       <workItem from="1743867216315" duration="510000" />
       <workItem from="1743867734017" duration="395000" />
       <workItem from="1743868135435" duration="654000" />
-      <workItem from="1743868797089" duration="903000" />
+      <workItem from="1743868797089" duration="1644000" />
+      <workItem from="1743931730962" duration="981000" />
+      <workItem from="1743937187466" duration="2824000" />
     </task>
     <servers />
   </component>

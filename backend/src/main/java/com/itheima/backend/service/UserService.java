@@ -2,7 +2,7 @@ package com.itheima.backend.service;
 
 import com.itheima.backend.model.entity.User;
 import com.itheima.backend.common.Result;
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 
 @Service

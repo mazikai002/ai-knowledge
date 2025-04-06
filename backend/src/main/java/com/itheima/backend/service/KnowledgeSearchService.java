@@ -7,6 +7,9 @@ import com.itheima.backend.model.vo.KnowledgeVO;
 
 /**
  * 知识库搜索服务接口
+ * 
+ * @author developer
+ * @date 2025/04/06
  */
 public interface KnowledgeSearchService {
     
@@ -34,4 +37,12 @@ public interface KnowledgeSearchService {
      * @return 知识搜索结果
      */
     PageResult<KnowledgeSearchVO> searchKnowledge(String keyword, int page, int size);
+    
+    /**
+     * 根据ID获取知识详情
+     *
+     * @param id 知识ID
+     * @return 知识详情VO
+     */
+    KnowledgeVO getKnowledge(Long id);
 } 

@@ -41,12 +41,25 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true
 
+  # 文件上传设置
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.itheima.backend.entity
   configuration:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# MinIO配置
+minio:
+  endpoint: http://localhost:9000
+  access-key: minioadmin
+  secret-key: minioadmin
+  bucket-name: knowledge-base
 
 openai:
   api:

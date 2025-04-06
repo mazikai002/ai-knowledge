@@ -8,6 +8,9 @@ import javax.validation.constraints.Size;
 
 /**
  * 知识库DTO
+ * 
+ * @author developer
+ * @date 2025/04/06
  */
 @Data
 public class KnowledgeDTO {
@@ -40,4 +43,9 @@ public class KnowledgeDTO {
      * 描述
      */
     private String description;
+    
+    /**
+     * 创建人ID
+     */
+    private Long createBy;
 } 
