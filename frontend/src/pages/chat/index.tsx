@@ -185,7 +185,7 @@ const ChatPage: React.FC = () => {
   const uploadProps = {
     name: 'file',
     multiple: true,
-    action: '/api/knowledge/file/upload', // 修正后端上传接口路径
+    action: '/api/v1/knowledge/file/upload', // 修正为v1版本API路径
     onChange(info: any) {
       const { status, name, uid } = info.file;
       
