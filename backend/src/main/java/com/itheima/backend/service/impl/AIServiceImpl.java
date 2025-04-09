@@ -2,7 +2,6 @@ package com.itheima.backend.service.impl;
 
 import com.itheima.backend.common.constant.BusinessConstant;
 import com.itheima.backend.common.enums.MessageTypeEnum;
-import com.itheima.backend.model.dto.MessageDTO;
 import com.itheima.backend.model.entity.Conversation;
 import com.itheima.backend.model.entity.Message;
 import com.itheima.backend.model.vo.MessageVO;
@@ -10,7 +9,7 @@ import com.itheima.backend.repository.mybatis.ConversationMapper;
 import com.itheima.backend.repository.mybatis.MessageMapper;
 import com.itheima.backend.service.AIService;
 import com.itheima.backend.service.AIModelService;
-import com.itheima.backend.service.ex.BusinessException;
+import com.itheima.backend.common.exception.BusinessException;
 import com.itheima.backend.model.converter.MessageConverter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

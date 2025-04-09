@@ -1,4 +1,4 @@
-package com.itheima.backend.service.ex;
+package com.itheima.backend.common.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

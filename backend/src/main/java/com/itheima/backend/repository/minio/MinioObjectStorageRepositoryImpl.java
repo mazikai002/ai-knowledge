@@ -1,7 +1,7 @@
 package com.itheima.backend.repository.minio;
 
 import com.itheima.backend.config.MinioConfig;
-import com.itheima.backend.service.ex.BusinessException;
+import com.itheima.backend.common.exception.BusinessException;
 import io.minio.*;
 import io.minio.http.Method;
 import lombok.RequiredArgsConstructor;

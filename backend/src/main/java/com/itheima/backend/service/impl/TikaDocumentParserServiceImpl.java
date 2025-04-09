@@ -1,7 +1,7 @@
 package com.itheima.backend.service.impl;
 
 import com.itheima.backend.service.DocumentParserService;
-import com.itheima.backend.service.ex.BusinessException;
+import com.itheima.backend.common.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tika.Tika;
 import org.apache.tika.exception.TikaException;

@@ -1,4 +1,4 @@
-package com.itheima.backend.service.ex;
+package com.itheima.backend.common.exception;
 
 import com.itheima.backend.common.Result;
 import com.itheima.backend.common.constant.CommonConstant;

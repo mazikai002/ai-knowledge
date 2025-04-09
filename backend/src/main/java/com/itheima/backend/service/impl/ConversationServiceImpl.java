@@ -11,7 +11,7 @@ import com.itheima.backend.repository.mybatis.ConversationMapper;
 import com.itheima.backend.repository.mybatis.MessageMapper;
 import com.itheima.backend.service.AIService;
 import com.itheima.backend.service.ConversationService;
-import com.itheima.backend.service.ex.BusinessException;
+import com.itheima.backend.common.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

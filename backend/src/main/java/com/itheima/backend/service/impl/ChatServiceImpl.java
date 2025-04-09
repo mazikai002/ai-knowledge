@@ -7,7 +7,7 @@ import com.itheima.backend.model.vo.ChatCompletionVO;
 import com.itheima.backend.model.vo.ChatMessageVO;
 import com.itheima.backend.model.vo.ChatUsageVO;
 import com.itheima.backend.service.ChatService;
-import com.itheima.backend.service.ex.BusinessException;
+import com.itheima.backend.common.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;

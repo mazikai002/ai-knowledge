@@ -6,7 +6,7 @@ import com.itheima.backend.model.dto.KnowledgeDTO;
 import com.itheima.backend.model.vo.KnowledgeVO;
 import com.itheima.backend.service.KnowledgeSearchService;
 import com.itheima.backend.service.KnowledgeService;
-import com.itheima.backend.service.ex.BusinessException;
+import com.itheima.backend.common.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

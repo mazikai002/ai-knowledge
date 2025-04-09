@@ -2,7 +2,7 @@ package com.itheima.backend.service.impl;
 
 import com.itheima.backend.common.constant.BusinessConstant;
 import com.itheima.backend.service.AIModelService;
-import com.itheima.backend.service.ex.BusinessException;
+import com.itheima.backend.common.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

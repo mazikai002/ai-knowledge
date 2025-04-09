@@ -4,7 +4,7 @@ import com.itheima.backend.common.PageResult;
 import com.itheima.backend.common.Result;
 import com.itheima.backend.model.vo.KnowledgeSearchVO;
 import com.itheima.backend.service.KnowledgeSearchService;
-import com.itheima.backend.service.ex.BusinessException;
+import com.itheima.backend.common.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
